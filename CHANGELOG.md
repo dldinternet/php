@@ -2,6 +2,12 @@ php Cookbook CHANGELOG
 ======================
 This file is used to list changes made in each version of the php cookbook.
 
+v1.2.6
+------
+### Bug
+
+- Do not automatically quote directives in template for php.ini
+
 v1.2.5
 ------
 ### Improvement
