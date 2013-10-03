@@ -2,6 +2,11 @@ php Cookbook CHANGELOG
 ======================
 This file is used to list changes made in each version of the php cookbook.
 
+v1.2.7
+------
+### Bug
+- Almost ALWAYS need gcc and make for PECL modules
+
 v1.2.6
 ------
 ### Bug

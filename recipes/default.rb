@@ -29,9 +29,12 @@ end
 
 bash "pear-channel-update" do
   code "pear channel-update pear.php.net ; touch /root/pear.php.net.channel"
-  action :nothing
-  not_if "test -f /root/pear.php.net.channel"
+  action :run
+  not_if { File.exists?("/root/pear.php.net.channel") }
 end
+
+package "gcc"
+package "make"
 
 php_pear_channel 'pecl.php.net' do
   action :update
@@ -40,8 +43,8 @@ end
 
 bash "pecl-channel-update" do
   code "pecl channel-update pecl.php.net ; touch /root/pecl.php.net.channel"
-  action :nothing
-  not_if "test -f /root/pecl.php.net.channel"
+  action :run
+  not_if { File.exists?("/root/pecl.php.net.channel") }
 end
 
 include_recipe "php::ini"
