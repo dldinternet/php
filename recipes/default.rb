@@ -24,10 +24,24 @@ include_recipe "php::#{node['php']['install_method']}"
 # update the main channels
 php_pear_channel 'pear.php.net' do
   action :update
+  notifies :run, "bash[pear-channel-update]", :immediately
+end
+
+bash "pear-channel-update" do
+  code "pear channel-update pear.php.net ; touch /root/pear.php.net.channel"
+  action :nothing
+  not_if "test -f /root/pear.php.net.channel"
 end
 
 php_pear_channel 'pecl.php.net' do
   action :update
+  notifies :run, "bash[pecl-channel-update]", :immediately
+end
+
+bash "pecl-channel-update" do
+  code "pecl channel-update pecl.php.net ; touch /root/pecl.php.net.channel"
+  action :nothing
+  not_if "test -f /root/pecl.php.net.channel"
 end
 
 include_recipe "php::ini"

@@ -5,8 +5,10 @@ This file is used to list changes made in each version of the php cookbook.
 v1.2.6
 ------
 ### Bug
-
 - Do not automatically quote directives in template for php.ini
+
+### Improvement
+- Run pecl/pear channel-update if not already done to avoid pear/pecl module install errors
 
 v1.2.5
 ------
