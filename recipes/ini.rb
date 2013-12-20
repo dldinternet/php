@@ -18,7 +18,7 @@
 # limitations under the License.
 #
 
-template "#{node['php']['conf_dir']}/php.ini" do
+template "#{node['php']['conf_dir']}/php.d/zzz-directives.ini" do
   source node['php']['ini']['template']
   cookbook node['php']['ini']['cookbook']
   owner "root"
