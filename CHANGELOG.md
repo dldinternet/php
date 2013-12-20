@@ -2,25 +2,6 @@ php Cookbook CHANGELOG
 ======================
 This file is used to list changes made in each version of the php cookbook.
 
-v1.2.7
-------
-### Bug
-- Almost ALWAYS need gcc and make for PECL modules
-
-v1.2.6
-------
-### Bug
-- Do not automatically quote directives in template for php.ini
-
-### Improvement
-- Run pecl/pear channel-update if not already done to avoid pear/pecl module install errors
-
-v1.2.5
-------
-### Improvement
-
-- **[COOK-3639](https://tickets.opscode.com/browse/COOK-3639)** - Allow a user supplied template for php.ini
-
 v1.2.6
 ------
 ### Bug
