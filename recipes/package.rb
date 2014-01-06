@@ -71,7 +71,7 @@ else
   #end
 
 	# Run the package installation at compile time
-	pkgs.each do |pkg|
+	node['php']['packages'].each do |pkg|
 		package pkg do
 			action :nothing
 		end.run_action(:install)

@@ -2,6 +2,16 @@ php Cookbook CHANGELOG
 ======================
 This file is used to list changes made in each version of the php cookbook.
 
+v1.3.11-15
+----------
+### Bug
+- Track down the php_pear resource merge bugs
+
+v1.2.7-1.3.10
+-------------
+### Improvement
+- Merge priestjim/chef-php and opscode/php into dldinternet/php
+
 v1.2.6
 ------
 ### Bug
