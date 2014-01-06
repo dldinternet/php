@@ -169,15 +169,15 @@ def remove_package(name, version)
   manage_pecl_ini(name, :delete) if pecl?
 end
 
-def pear_shell_out(command)
-  p = shell_out!(command)
+def pear_shell_out(command, shell_timeout)
+  p = shell_out!(command, :timeout => shell_timeout)
   # pear/pecl commands return a 0 on failures...we'll grep for it
   p.invalid! if p.stdout.split('\n').last =~ /^ERROR:.+/i
   p
 end
 
-def purge_package(name, version)
-  remove_package(name, version)
+def purge_package(name, version, shell_timeout)
+  remove_package(name, version, shell_timeout)
 end
 
 def expand_channel(channel)

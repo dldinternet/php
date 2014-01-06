@@ -34,4 +34,6 @@ when 'debian'
   package 'php5-memcache' do
     action :install
   end
+else
+	# noop
 end

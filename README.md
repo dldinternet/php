@@ -14,7 +14,17 @@ Requirements
 - xml
 - mysql
 
-These cookbooks are only used when building PHP from source.
+Supported Operating Systems
+===========================
+
+This cookbook supports the following Linux distributions:
+
+* Ubuntu >= 12.04
+* Debian >= 6.0
+* CentOS >= 6.0
+* RedHat >= 6.0
+
+It also supports **Chef 10.14** and higher
 
 
 Attributes
@@ -26,6 +36,8 @@ The file also contains the following attribute types:
 
 * platform specific locations and settings.
 * source installation settings
+* ini configuration settings
+* fpm-specific settings
 
 
 Resource/Provider
@@ -34,6 +46,7 @@ This cookbook includes LWRPs for managing:
 
 - PEAR channels
 - PEAR/PECL packages
+- PHP-FPM instances
 
 ### `php_pear_channel`
 [PEAR Channels](http://pear.php.net/manual/en/guide.users.commandline.channels.php) are alternative sources for PEAR packages.  This LWRP provides and easy way to manage these channels.
@@ -247,6 +260,7 @@ License & Authors
 - Author:: Seth Chisamore (<schisamo@opscode.com>)
 - Author:: Joshua Timberman (<joshua@opscode.com>)
 - Author:: Julian C. Dunn (<jdunn@getchef.com>)
+- Author:: Panagiotis Papadomitsos (<pj@ezgr.net>)
 
 ```text
 Copyright:: 2013, Chef Software, Inc.

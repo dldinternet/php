@@ -3,14 +3,19 @@ maintainer        'Opscode, Inc.'
 maintainer_email  'cookbooks@opscode.com'
 license           'Apache 2.0'
 description       'Installs and maintains php and php modules'
-version           '1.3.11'
+long_description  IO.read(File.join(File.dirname(__FILE__), 'README.md')).chomp
+version           IO.read(File.join(File.dirname(__FILE__), 'VERSION')).chomp rescue '1.3.11'
 
-depends 'build-essential'
-depends 'xml'
-depends 'mysql'
-depends 'yum-epel'
-depends 'windows'
-depends 'iis'
+depends           'build-essential'
+depends           'xml'
+depends           'apt'
+depends           'mysql'
+depends           'yum-epel'
+depends           'windows'
+depends           'iis'
+
+suggests          'apache2'
+suggests          'nginx'
 
 %w{ debian ubuntu centos redhat fedora scientific amazon windows }.each do |os|
   supports os

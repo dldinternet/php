@@ -26,4 +26,6 @@ when 'debian'
   package 'php5-curl' do
     action :upgrade
   end
+else
+	# noop
 end

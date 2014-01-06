@@ -1,5 +1,7 @@
 #
 # Author:: Seth Chisamore (<schisamo@opscode.com>)
+# Author:: Panagiotis Papadomitsos (pj@ezgr.net)
+#
 # Cookbook Name:: php
 # Attribute:: default
 #
@@ -42,12 +44,18 @@ when 'rhel', 'fedora'
   else
     default['php']['packages'] = %w{ php php-devel php-cli php-pear }
   end
+  default['php']['pear_dir']      = '/usr/share/pear'
+  default['php']['session_dir']   = '/var/lib/php/session5'
+  default['php']['upload_dir']    = '/var/lib/php/uploads'
 when 'debian'
   default['php']['conf_dir']      = '/etc/php5/cli'
   default['php']['ext_conf_dir']  = '/etc/php5/conf.d'
   default['php']['fpm_user']      = 'www-data'
   default['php']['fpm_group']     = 'www-data'
   default['php']['packages']      = %w{ php5-cgi php5 php5-dev php5-cli php-pear }
+  default['php']['pear_dir']      = '/usr/share/php'
+  default['php']['session_dir']   = '/var/lib/php5/session5'
+  default['php']['upload_dir']    = '/var/lib/php5/uploads'
 when 'suse'
   default['php']['conf_dir']      = '/etc/php5/cli'
   default['php']['ext_conf_dir']  = '/etc/php5/conf.d'
@@ -123,3 +131,8 @@ default['php']['configure_options'] = %W{--prefix=#{php['prefix_dir']}
                                          --with-sqlite3
                                          --with-pdo-mysql
                                          --with-pdo-sqlite}
+
+default['php']['secure_functions']['disable_functions'] = 'dl,posix_kill,posix_mkfifo,posix_setuid,proc_close,proc_open,proc_terminate,shell_exec,system,leak,posix_setpgid,posix_setsid,proc_get_status,proc_nice,show_source,virtual,proc_terminate,inject_code,define_syslog_variables,syslog,posix_uname'
+
+default['php']['tmpfs'] = true
+default['php']['tmpfs_size'] = '128M'

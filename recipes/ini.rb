@@ -25,4 +25,5 @@ template "#{node['php']['conf_dir']}/php.d/zzz-directives.ini" do
   group "root"
   mode "0644"
   variables(:directives => node['php']['directives'])
+  notifies :restart, 'service[php-fpm]' if node['recipes'].include?('php::fpm') && platform_family?('rhel', 'fedora')
 end

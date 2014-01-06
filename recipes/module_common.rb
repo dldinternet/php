@@ -1,10 +1,8 @@
 #
-# Author::  Joshua Timberman (<joshua@opscode.com>)
-# Author::  Seth Chisamore (<schisamo@opscode.com>)
 # Author::  Panagiotis Papadomitsos (<pj@ezgr.net>)
 #
 # Cookbook Name:: php
-# Recipe:: module_pgsql
+# Recipe:: module_common
 #
 # Copyright 2009-2011, Opscode, Inc.
 #
@@ -21,14 +19,13 @@
 # limitations under the License.
 #
 
-pkg = value_for_platform(
-  %w(centos redhat scientific fedora amazon) => {
-    el5_range => 'php53-pgsql',
-    'default' => 'php-pgsql'
-  },
-  'default' => 'php5-pgsql'
+pkg = value_for_platform_family(
+    [ 'rhel', 'fedora' ] => %w{ php-common php-cli php-mbstring php-gd php-intl php-pspell php-mcrypt php-soap php-sqlite php-xml php-xmlrpc }, 
+    'debian' => %w{ php5-curl php5-json php5-cli php5-gd php5-intl php5-pspell php5-mcrypt php5-mhash php5-sqlite php5-xsl php5-xmlrpc }
 )
 
-package pkg do
-  action :install
+pkg.each do |ppkg| 
+	package ppkg do
+	  action :install
+	end
 end

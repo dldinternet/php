@@ -1,6 +1,8 @@
 #
 # Author::  Joshua Timberman (<joshua@opscode.com>)
 # Author::  Seth Chisamore (<schisamo@opscode.com>)
+# Author::  Panagiotis Papadomitsos (<pj@ezgr.net>)
+#
 # Cookbook Name:: php
 # Recipe:: module_apc
 #
@@ -21,7 +23,7 @@
 
 case node['platform_family']
 when 'rhel', 'fedora'
-  %w{ httpd-devel pcre pcre-devel }.each do |pkg|
+  %w{ httpd-devel pcre pcre-devel php-pecl-apc }.each do |pkg|
     package pkg do
       action :install
     end
@@ -30,8 +32,18 @@ when 'rhel', 'fedora'
     action :install
     directives(:shm_size => '128M', :enable_cli => 0)
   end
+
 when 'debian'
   package 'php-apc' do
     action :install
   end
+else
+	# noop
+end
+
+template "#{node['php']['ext_conf_dir']}/apc.ini" do
+  source 'apc.ini.erb'
+  owner 'root'
+  group 'root'
+  mode 00644
 end

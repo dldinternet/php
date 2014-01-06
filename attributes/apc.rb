@@ -1,12 +1,10 @@
 #
-# Author::  Joshua Timberman (<joshua@opscode.com>)
-# Author::  Seth Chisamore (<schisamo@opscode.com>)
-# Author::  Panagiotis Papadomitsos (<pj@ezgr.net>)
+# Author:: Panagiotis Papadomitsos (pj@ezgr.net)
 #
 # Cookbook Name:: php
-# Recipe:: module_pgsql
+# Attribute:: apc
 #
-# Copyright 2009-2011, Opscode, Inc.
+# Copyright:: 2012, Panagiotis Papadomitsos
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,14 +19,8 @@
 # limitations under the License.
 #
 
-pkg = value_for_platform(
-  %w(centos redhat scientific fedora amazon) => {
-    el5_range => 'php53-pgsql',
-    'default' => 'php-pgsql'
-  },
-  'default' => 'php5-pgsql'
-)
-
-package pkg do
-  action :install
-end
+default['php']['apc']['shm_size'] = '128M'
+default['php']['apc']['local_size'] = '128M'
+default['php']['apc']['ttl'] = '7200'
+default['php']['apc']['user_ttl'] = '7200'
+default['php']['apc']['coredump_unmap'] = '1'

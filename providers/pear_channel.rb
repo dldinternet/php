@@ -33,6 +33,7 @@ action :discover do
     Chef::Log.info("Discovering pear channel #{@new_resource}")
     execute "#{node['php']['pear']} channel-discover #{@new_resource.channel_name}" do
       action :run
+      only_if { true }
     end
   end
 end
@@ -42,6 +43,7 @@ action :add do
     Chef::Log.info("Adding pear channel #{@new_resource} from #{@new_resource.channel_xml}")
     execute "#{node['php']['pear']} channel-add #{@new_resource.channel_xml}" do
       action :run
+      only_if { true }
     end
   end
 end
@@ -71,6 +73,7 @@ action :remove do
     Chef::Log.info("Deleting pear channel #{@new_resource}")
     execute "#{node['php']['pear']} channel-delete #{@new_resource.channel_name}" do
       action :run
+      only_if { true }
     end
   end
 end
