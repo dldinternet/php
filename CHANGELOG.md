@@ -2,6 +2,11 @@ php Cookbook CHANGELOG
 ======================
 This file is used to list changes made in each version of the php cookbook.
 
+v1.3.16
+----------
+### Bug
+- PEAR package upgrade assumes that current version can always be found. Need to work if version == ''
+
 v1.3.11-15
 ----------
 ### Bug
