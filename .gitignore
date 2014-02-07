@@ -14,5 +14,4 @@ bin
 .kitchen.local.yml
 .kitchen/
 .idea
-.ruby-gemset
-.ruby-version
+.ruby-*
