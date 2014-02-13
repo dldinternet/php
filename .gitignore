@@ -32,3 +32,4 @@ berkshelf
 .rake_test_cache
 .idea
 .ruby-*
+.DS_Store
